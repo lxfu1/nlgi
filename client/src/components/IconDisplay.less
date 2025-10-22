@@ -1,0 +1,427 @@
+.icon-display-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 128px;
+    height: 128px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 0;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+  }
+
+  .ant-card-body {
+    position: relative;
+    z-index: 1;
+    padding: 32px;
+  }
+}
+
+.icon-display-empty {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 48px 32px;
+
+  .empty-icon {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 24px;
+    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-size: 48px;
+  }
+}
+
+.icon-display-header {
+  margin-bottom: 32px;
+
+  .header-title {
+    .ant-typography {
+      margin-bottom: 8px;
+    }
+
+    .anticon {
+      color: #3b82f6;
+    }
+  }
+}
+
+.icon-grid {
+  .ant-row {
+    margin: 0 -12px;
+  }
+}
+
+.icon-card-container {
+  margin-bottom: 24px;
+}
+
+.icon-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: 2px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: -1;
+  }
+
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: #3b82f6;
+
+    .icon-svg-container {
+      transform: scale(1.1);
+    }
+
+    .hover-actions {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: all;
+    }
+
+    .quick-actions-badge {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &.selected {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border-color: #3b82f6;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+
+    &::before {
+      opacity: 0.1;
+    }
+  }
+
+  .ant-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.icon-preview {
+  position: relative;
+  width: 100%;
+  margin-bottom: 16px;
+
+  .icon-svg-container {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+
+  .icon-svg {
+    width: 64px;
+    height: 64px;
+    color: #374151;
+    transition: color 0.3s;
+  }
+
+  .quick-actions-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    animation: bounce 1s infinite;
+  }
+}
+
+.icon-info {
+  text-align: center;
+  width: 100%;
+
+  .icon-name {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #111827;
+  }
+
+  .icon-description {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.4;
+  }
+}
+
+.hover-actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  transform: translateY(-8px) scale(0.9);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 10;
+
+  .actions-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    .ant-btn {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: all 0.2s;
+
+      &:hover {
+        background: rgba(59, 130, 246, 0.1);
+        color: #3b82f6;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+  }
+}
+
+.selection-indicator {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+// Animations
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -15px, 0);
+  }
+  70% {
+    transform: translate3d(0, -7px, 0);
+  }
+  90% {
+    transform: translate3d(0, -3px, 0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4), 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.5);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out both;
+}
+
+// Dropdown menu styling
+.ant-dropdown {
+  .ant-dropdown-menu {
+    border-radius: 12px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+    .ant-dropdown-menu-item {
+      border-radius: 8px;
+      padding: 8px 12px;
+      transition: all 0.2s;
+      font-size: 12px;
+
+      &:hover {
+        background: rgba(59, 130, 246, 0.1);
+        color: #3b82f6;
+        transform: translateX(4px);
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .icon-display-card .ant-card-body {
+    padding: 20px;
+  }
+
+  .icon-display-header {
+    margin-bottom: 24px;
+  }
+
+  .icon-card {
+    .ant-card-body {
+      padding: 16px;
+    }
+
+    .icon-svg {
+      width: 48px;
+      height: 48px;
+    }
+
+    .hover-actions {
+      top: 8px;
+      right: 8px;
+
+      .actions-column .ant-btn {
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    .selection-indicator,
+    .quick-actions-badge {
+      width: 28px;
+      height: 28px;
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-display-card .ant-card-body {
+    padding: 16px;
+  }
+
+  .icon-card {
+    .ant-card-body {
+      padding: 12px;
+    }
+
+    .icon-svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    .icon-info {
+      .icon-name {
+        font-size: 12px;
+      }
+
+      .icon-description {
+        font-size: 10px;
+      }
+    }
+  }
+}

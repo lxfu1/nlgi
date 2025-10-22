@@ -1,0 +1,221 @@
+.export-panel {
+  .panel-header {
+    margin-bottom: 24px;
+
+    .ant-typography {
+      margin-bottom: 8px;
+    }
+  }
+
+  .selected-icons-preview {
+    background: #fafafa;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    padding: 24px;
+    margin-bottom: 24px;
+
+    .icons-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+
+      .icon-chip {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #ffffff;
+        border: 1px solid #d9d9d9;
+        border-radius: 6px;
+        padding: 8px 12px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+        transition: all 0.2s ease;
+        animation: fadeIn 0.3s ease-in-out forwards;
+        opacity: 0;
+
+        &:hover {
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+          transform: translateY(-1px);
+        }
+
+        .icon-chip-svg {
+          width: 20px;
+          height: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: rgba(0, 0, 0, 0.45);
+
+          svg {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .icon-chip-name {
+          font-size: 12px;
+          font-weight: 500;
+          color: rgba(0, 0, 0, 0.85);
+          max-width: 120px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  .export-settings,
+  .save-collection {
+    .ant-form-item {
+      margin-bottom: 16px;
+    }
+
+    .ant-typography {
+      margin-bottom: 16px;
+    }
+  }
+
+  .format-option {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .save-button {
+    background: linear-gradient(135deg, #52c41a, #389e0d);
+    border: none;
+
+    &:hover {
+      background: linear-gradient(135deg, #389e0d, #237804);
+      border-color: transparent;
+    }
+
+    &:focus {
+      background: linear-gradient(135deg, #52c41a, #389e0d);
+      border-color: transparent;
+    }
+  }
+
+  .pro-tip {
+    margin-top: 16px;
+    border-radius: 6px;
+
+    .ant-alert-icon {
+      color: #1890ff;
+    }
+  }
+
+  .panel-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  // Animations
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  // Empty state
+  &.export-panel-empty {
+    text-align: center;
+    padding: 48px 24px;
+
+    .ant-empty {
+      .ant-empty-image {
+        margin-bottom: 16px;
+
+        svg {
+          font-size: 48px;
+          color: rgba(0, 0, 0, 0.45);
+        }
+      }
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    .ant-row {
+      flex-direction: column;
+    }
+
+    .ant-col {
+      width: 100% !important;
+      margin-bottom: 24px;
+    }
+
+    .selected-icons-preview {
+      .icons-list {
+        .icon-chip {
+          .icon-chip-name {
+            max-width: 80px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .panel-footer {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+
+    .format-option {
+      height: 48px;
+    }
+  }
+}
+
+// Radio group custom styles
+.ant-radio-group {
+  .ant-radio-button-wrapper {
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: #40a9ff;
+      color: #40a9ff;
+    }
+
+    &.ant-radio-button-wrapper-checked {
+      background: #1890ff;
+      border-color: #1890ff;
+      color: #ffffff;
+
+      &:hover {
+        background: #40a9ff;
+        border-color: #40a9ff;
+      }
+    }
+  }
+}
+
+// Button loading state
+.ant-btn-loading {
+  .anticon {
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
