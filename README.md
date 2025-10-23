@@ -21,36 +21,12 @@
 <img width="1223" height="998" alt="image" src="https://github.com/user-attachments/assets/3039de9b-85bd-4f1b-8d9e-05c5a1307f4e" />
 
 
-## 🛠 技术栈
-
-### 前端
-- **React 18** - 现代化的用户界面框架
-- **TypeScript** - 类型安全的开发体验
-- **CSS3** - 优雅的样式和动画效果
-- **Axios** - 高效的 HTTP 客户端
-
-### 后端
-- **Node.js** - 高性能的 JavaScript 运行时
-- **Express.js** - 简洁快速的 Web 框架
-- **CORS** - 跨域资源共享支持
-- **Rate Limiting** - API 请求频率限制
-
-### AI 服务
-- **智谱AI (GLM-4)** - 强大的中文语言模型，其它 AI 只需简单修改接口即可（server/services/aiService.js）
-- **RESTful API** - 标准化的接口设计
-
 ## 🚀 快速开始
-
-### 前置要求
-
-- Node.js 18.0 或更高版本
-- npm 或 yarn 包管理器
-- 智谱AI API 密钥 (从 [智谱AI开放平台](https://open.bigmodel.cn/) 获取)
 
 ### 1. 克隆项目
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/lxfu1/nlgi.git
 cd ai-icon-factory
 ```
 
