@@ -18,7 +18,7 @@
 - 📱 **响应式设计**: 完美适配桌面和移动设备
 - ⚡ **实时预览**: 所见即所得的编辑体验
 
-<img width="1223" height="998" alt="image" src="https://github.com/user-attachments/assets/3039de9b-85bd-4f1b-8d9e-05c5a1307f4e" />
+<img width="1236" height="1631" alt="image" src="https://github.com/user-attachments/assets/c20780db-f368-4138-b8d6-8d0f720b68d4" />
 
 
 ## 🚀 快速开始
