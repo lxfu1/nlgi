@@ -8,9 +8,9 @@ import {
   Button,
   Tooltip,
   Row,
-  Col,
-  message
+  Col
 } from 'antd';
+import { toast } from 'react-hot-toast';
 import {
   EditOutlined,
   CopyOutlined,
@@ -44,13 +44,13 @@ const IconDisplay: React.FC<IconDisplayProps> = ({
     try {
       const success = await copySVGToClipboard(icon.svg);
       if (success) {
-        message.success('SVG copied to clipboard!');
+        toast.success('SVG copied to clipboard!');
       } else {
-        message.error('Failed to copy SVG');
+        toast.error('Failed to copy SVG');
       }
     } catch (error) {
       console.error('Failed to copy SVG:', error);
-      message.error('Failed to copy SVG');
+      toast.error('Failed to copy SVG');
     }
   };
 

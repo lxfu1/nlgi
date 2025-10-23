@@ -60,15 +60,16 @@ const IconGenerator: React.FC<IconGeneratorProps> = ({
         count
       };
 
-      console.log('🎨 Generating icons:', request);
       const response = await aiApi.generateIcons(request);
+
+      console.log('🎨 Generating icons:', response);
 
       if (response.success && response.data.icons.length > 0) {
         // Process and enhance icons with unique names
         const enhancedIcons = response.data.icons.map((icon, index) => ({
           ...icon,
           id: `${Date.now()}-${index}`,
-          name: generateIconName(icon.description || icon.name, index)
+          name: generateIconName(icon.name)
         }));
 
         onIconsGenerated(enhancedIcons);

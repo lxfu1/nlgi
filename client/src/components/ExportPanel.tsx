@@ -158,19 +158,19 @@ const ExportPanel: React.FC<ExportPanelProps> = ({
 
   if (selectedIcons.length === 0) {
     return (
-      <Card className="export-panel-empty">
+      <Card className='export-panel-empty'>
         <Empty
           image={<InboxOutlined />}
           description={
             <div>
-              <Title level={4} className="mb-3">
+              <Title level={4} className='mb-3'>
                 Ready to export?
               </Title>
-              <Text type="secondary" className="block">
-                Select some icons from your generated collection to unlock export
-                options and save your favorites!
+              <Text type='secondary' className='block'>
+                Select some icons from your generated collection to unlock
+                export options and save your favorites!
               </Text>
-              <Text type="secondary" className="text-sm mt-2 block">
+              <Text type='secondary' className='text-sm mt-2 block'>
                 👆 Click on icons to select them
               </Text>
             </div>
@@ -181,36 +181,38 @@ const ExportPanel: React.FC<ExportPanelProps> = ({
   }
 
   return (
-    <Card className="export-panel">
-      <div className="panel-header">
-        <Title level={2} className="flex items-center">
-          <DownloadOutlined className="mr-3" />
+    <Card className='export-panel'>
+      <div className='panel-header'>
+        <Title level={2} className='flex items-center'>
+          <DownloadOutlined className='mr-3' />
           Export & Save
-          <Badge count={selectedIcons.length} className="ml-3" />
+          <Badge count={selectedIcons.length} className='ml-3' />
         </Title>
-        <Text type="secondary">
-          Download your icons in multiple formats or save them to your
-          personal library
+        <Text type='secondary'>
+          Download your icons in multiple formats or save them to your personal
+          library
         </Text>
       </div>
 
       {/* Selected Icons Preview */}
-      <div className="selected-icons-preview">
-        <Title level={4} className="flex items-center">
+      <div className='selected-icons-preview'>
+        <Title level={4} className='flex items-center'>
           ✨ Your Selected Icons
         </Title>
-        <div className="icons-list">
+        <div className='icons-list'>
           {selectedIcons.map((icon, index) => (
             <div
               key={icon.id}
-              className="icon-chip"
+              className='icon-chip'
               style={{ animationDelay: `${index * 50}ms` }}
             >
               <div
-                className="icon-chip-svg"
+                className='icon-chip-svg'
                 dangerouslySetInnerHTML={{ __html: icon.svg }}
               />
-              <span className="icon-chip-name">{icon.name}</span>
+              <span className='icon-chip-name'>
+                {icon.name || icon.description}
+              </span>
             </div>
           ))}
         </div>
@@ -218,26 +220,26 @@ const ExportPanel: React.FC<ExportPanelProps> = ({
 
       <Row gutter={[24, 24]}>
         <Col span={12}>
-          <div className="export-settings">
+          <div className='export-settings'>
             <Title level={3}>⚙️ Export Settings</Title>
 
-            <Form layout="vertical">
-              <Form.Item label="🎨 Choose Format">
+            <Form layout='vertical'>
+              <Form.Item label='🎨 Choose Format'>
                 <Radio.Group
                   value={exportFormat}
                   onChange={(e) => setExportFormat(e.target.value)}
                 >
-                  <Space direction="vertical" style={{ width: '100%' }}>
-                    <Radio.Button value="svg" className="format-option">
-                      <FileTextOutlined className="mr-2" />
+                  <Space direction='vertical' style={{ width: '100%' }}>
+                    <Radio.Button value='svg' className='format-option'>
+                      <FileTextOutlined className='mr-2' />
                       SVG
                     </Radio.Button>
-                    <Radio.Button value="png" className="format-option">
-                      <PictureOutlined className="mr-2" />
+                    <Radio.Button value='png' className='format-option'>
+                      <PictureOutlined className='mr-2' />
                       PNG
                     </Radio.Button>
-                    <Radio.Button value="jpg" className="format-option">
-                      <PictureOutlined className="mr-2" />
+                    <Radio.Button value='jpg' className='format-option'>
+                      <PictureOutlined className='mr-2' />
                       JPG
                     </Radio.Button>
                   </Space>
@@ -245,7 +247,7 @@ const ExportPanel: React.FC<ExportPanelProps> = ({
               </Form.Item>
 
               {exportFormat !== 'svg' && (
-                <Form.Item label="📏 Export Size">
+                <Form.Item label='📏 Export Size'>
                   <Select
                     value={exportSize}
                     onChange={setExportSize}
@@ -255,16 +257,20 @@ const ExportPanel: React.FC<ExportPanelProps> = ({
                 </Form.Item>
               )}
 
-              <Space direction="vertical" style={{ width: '100%' }}>
+              <Space direction='vertical' style={{ width: '100%' }}>
                 <Button
-                  type="primary"
-                  size="large"
+                  type='primary'
+                  size='large'
                   block
                   loading={isExporting}
                   onClick={handleExportSelected}
                   icon={<DownloadOutlined />}
                 >
-                  {isExporting ? 'Exporting...' : `Download ${selectedIcons.length} ${exportFormat.toUpperCase()} files`}
+                  {isExporting
+                    ? 'Exporting...'
+                    : `Download ${
+                        selectedIcons.length
+                      } ${exportFormat.toUpperCase()} files`}
                 </Button>
 
                 {exportFormat === 'svg' && (
@@ -282,38 +288,38 @@ const ExportPanel: React.FC<ExportPanelProps> = ({
         </Col>
 
         <Col span={12}>
-          <div className="save-collection">
+          <div className='save-collection'>
             <Title level={3}>💾 Save to Library</Title>
 
-            <Form layout="vertical">
-              <Form.Item label="📝 Collection Name">
+            <Form layout='vertical'>
+              <Form.Item label='📝 Collection Name'>
                 <Input
                   value={collectionName}
                   onChange={(e) => setCollectionName(e.target.value)}
-                  placeholder="My Awesome Icon Set"
+                  placeholder='My Awesome Icon Set'
                 />
               </Form.Item>
 
               <Button
-                type="primary"
+                type='primary'
                 block
-                size="large"
+                size='large'
                 loading={isSaving}
                 disabled={!collectionName.trim()}
                 onClick={handleSaveCollection}
                 icon={<SaveOutlined />}
-                className="save-button"
+                className='save-button'
               >
                 {isSaving ? 'Saving...' : 'Save Collection'}
               </Button>
             </Form>
 
             <Alert
-              message="💡 Pro Tip"
-              description="Save collections to build your personal icon library and access them anytime!"
-              type="info"
+              message='💡 Pro Tip'
+              description='Save collections to build your personal icon library and access them anytime!'
+              type='info'
               showIcon
-              className="pro-tip"
+              className='pro-tip'
             />
           </div>
         </Col>
@@ -321,16 +327,14 @@ const ExportPanel: React.FC<ExportPanelProps> = ({
 
       <Divider />
 
-      <div className="panel-footer">
+      <div className='panel-footer'>
         <Space>
-          <Button
-            icon={<ClearOutlined />}
-            onClick={onClearSelection}
-          >
+          <Button icon={<ClearOutlined />} onClick={onClearSelection}>
             Clear Selection
           </Button>
-          <Text type="secondary">
-            {selectedIcons.length} icon{selectedIcons.length !== 1 ? 's' : ''} ready to export
+          <Text type='secondary'>
+            {selectedIcons.length} icon{selectedIcons.length !== 1 ? 's' : ''}{' '}
+            ready to export
           </Text>
         </Space>
       </div>

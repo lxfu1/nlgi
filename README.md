@@ -33,7 +33,7 @@
 - **Rate Limiting** - API 请求频率限制
 
 ### AI 服务
-- **智谱AI (GLM-4)** - 强大的中文语言模型
+- **智谱AI (GLM-4)** - 强大的中文语言模型，其它 AI 只需简单修改接口即可（server/services/aiService.js）
 - **RESTful API** - 标准化的接口设计
 
 ## 🚀 快速开始
@@ -74,7 +74,7 @@ npm run dev
 
 ### 4. 配置 AI API
 
-编辑 `server/.env` 文件，添加你的智谱AI API 密钥：
+编辑 `server/.env` 文件，添加你的[智谱AI API 密钥](https://bigmodel.cn/usercenter/proj-mgmt/apikeys)：
 
 ```env
 AI_API_KEY=your_actual_zhipuai_api_key_here
@@ -261,12 +261,6 @@ DEBUG=* npm run server
 ## 📄 开源协议
 
 本项目采用 MIT 协议 - 查看 [LICENSE](LICENSE) 文件了解详情
-
-## 🙏 致谢
-
-- [智谱AI](https://open.bigmodel.cn/) - 提供强大的 AI 生成能力
-- [React](https://reactjs.org/) - 优秀的前端框架
-- [Express.js](https://expressjs.com/) - 简洁的后端框架
 
 ---
 
