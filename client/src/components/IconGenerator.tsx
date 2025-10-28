@@ -41,12 +41,18 @@ const IconGenerator: React.FC<IconGeneratorProps> = ({
 }) => {
   const [prompt, setPrompt] = useState('');
   const [style, setStyle] = useState<GenerateRequest['style']>('modern');
-  const [count, setCount] = useState(3);
+  const [count, setCount] = useState(2);
 
   const handleGenerate = async () => {
     if (!prompt.trim()) {
       toast.error(
         'Please enter a description for the icons you want to generate'
+      );
+      return;
+    }
+    if (prompt.trim().length < 3) {
+      toast.error(
+        'Please provide a more detailed description (at least 3 characters)'
       );
       return;
     }
