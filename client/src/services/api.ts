@@ -6,11 +6,10 @@ import {
   ApiResponse
 } from '../types';
 
-const API_BASE_URL =
-  process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
+const BASE_URL = window.location.origin;
 
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: `${BASE_URL}/api`,
   timeout: 300000, // 5 minutes timeout for AI generation
   headers: {
     'Content-Type': 'application/json'

@@ -122,6 +122,7 @@ const IconGenerator: React.FC<IconGeneratorProps> = ({
         rows={4}
         maxLength={500}
         disabled={isLoading}
+        style={{ borderRadius: 0 }}
         showCount
       />
 
