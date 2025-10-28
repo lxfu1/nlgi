@@ -6,10 +6,11 @@ import {
   ApiResponse
 } from '../types';
 
-const BASE_URL = window.location.origin;
+const BASE_URL = window.location.origin.split(':').slice(0, 2).join(':');
+const SERVICE_PORT = '3001';
 
 const api = axios.create({
-  baseURL: `${BASE_URL}/api`,
+  baseURL: `${BASE_URL}:${SERVICE_PORT}/api`,
   timeout: 300000, // 5 minutes timeout for AI generation
   headers: {
     'Content-Type': 'application/json'

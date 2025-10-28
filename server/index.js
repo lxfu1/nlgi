@@ -12,10 +12,12 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(helmet());
-app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL || 'http://localhost:3000',
+    credentials: true
+  })
+);
 
 // Rate limiting
 const limiter = rateLimit({
@@ -41,7 +43,10 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({
     error: 'Something went wrong!',
-    message: process.env.NODE_ENV === 'development' ? err.message : 'Internal server error'
+    message:
+      process.env.NODE_ENV === 'development'
+        ? err.message
+        : 'Internal server error'
   });
 });
 

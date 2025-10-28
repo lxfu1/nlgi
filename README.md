@@ -58,8 +58,6 @@ npm run dev
 ```env
 AI_API_KEY=your_actual_zhipuai_api_key_here
 PORT=3001
-NODE_ENV=development
-CLIENT_URL=http://localhost:3000
 ```
 
 ### 5. 访问应用
