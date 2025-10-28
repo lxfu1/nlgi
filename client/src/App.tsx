@@ -204,7 +204,7 @@ function App() {
         <div className='footer-content'>
           <Space split={<span className='footer-divider'>•</span>}>
             <Link
-              href='https://github.com/lxfu1/ai-icon-factory'
+              href='https://github.com/lxfu1/nlgi'
               target='_blank'
               rel='noopener noreferrer'
               className='footer-link'
