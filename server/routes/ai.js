@@ -28,7 +28,8 @@ const generateSchema = Joi.object({
     desc: Joi.string().required(),
     label: Joi.string().optional()
   }).required(),
-  count: Joi.number().optional().integer().min(1).max(8).default(6)
+  count: Joi.number().optional().integer().min(1).max(8).default(2),
+  size: Joi.number().optional().integer().default(32)
 });
 
 // Apply AI rate limiter to all routes
@@ -52,7 +53,7 @@ router.post('/generate', async (req, res) => {
       });
     }
 
-    const { prompt, style, count } = value;
+    const { prompt, style, count, size } = value;
 
     // Check if AI service is configured
     if (!process.env.AI_API_KEY) {
@@ -69,7 +70,11 @@ router.post('/generate', async (req, res) => {
     );
 
     // Generate icons using AI service
-    const result = await aiService.generateIcons(prompt, { style, count });
+    const result = await aiService.generateIcons(prompt, {
+      style,
+      count,
+      size
+    });
 
     // Limit the number of icons returned
     if (result.icons.length > count) {

@@ -13,7 +13,8 @@ class AIService {
   async generateIcons(prompt, options = {}) {
     const {
       style = { value: 'modern', desc: 'Clean and contemporary look' },
-      count = 2
+      count = 2,
+      size = 32
     } = options;
     try {
       const systemPrompt = `你是一个专业的 SVG 图标设计师。根据用户描述生成高质量、现代化的 SVG 图标。
@@ -23,7 +24,7 @@ class AIService {
 2. 满足 ${style.value} (${style.desc}) 风格需求
 3. 使用纯色设计，适合 UI 界面使用
 4. SVG 代码要简洁，使用 path、circle、rect 等基本元素
-5. 图标尺寸建议 24x24 或 32x32 视图框
+5. 图标尺寸建议 ${size}x${size} 视图框
 6. 提供每个图标的简短描述
 
 返回格式：

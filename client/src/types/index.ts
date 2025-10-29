@@ -19,6 +19,7 @@ export interface GenerateRequest {
   prompt: string;
   style?: object;
   count?: number;
+  size?: number;
 }
 
 export interface GenerateResponse {

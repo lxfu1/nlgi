@@ -9,7 +9,8 @@ import {
   Typography,
   Row,
   Col,
-  Divider
+  Divider,
+  Select
 } from 'antd';
 import {
   RobotOutlined,
@@ -18,7 +19,8 @@ import {
   NumberOutlined,
   BulbOutlined,
   RocketOutlined,
-  LoadingOutlined
+  LoadingOutlined,
+  ColumnHeightOutlined
 } from '@ant-design/icons';
 import { aiApi } from '../services/api';
 import { Icon, GenerateRequest } from '../types';
@@ -53,12 +55,21 @@ const STYLES = [
   }
 ];
 
+const SIZEOPTIONS = [
+  { value: 16, label: '16x16' },
+  { value: 32, label: '32x32' },
+  { value: 48, label: '48x48' },
+  { value: 64, label: '64x64' },
+  { value: 128, label: '128x128' }
+];
+
 const IconGenerator: React.FC<IconGeneratorProps> = ({
   onIconsGenerated,
   isLoading,
   setIsLoading
 }) => {
   const [prompt, setPrompt] = useState('');
+  const [size, setSize] = useState<number>(32);
   const [style, setStyle] = useState<string>('modern');
   const [count, setCount] = useState(2);
 
@@ -83,7 +94,8 @@ const IconGenerator: React.FC<IconGeneratorProps> = ({
       const request: GenerateRequest = {
         prompt: prompt.trim(),
         style: styleInfo,
-        count
+        count,
+        size
       };
 
       const response = await aiApi.generateIcons(request);
@@ -124,21 +136,21 @@ const IconGenerator: React.FC<IconGeneratorProps> = ({
 
   return (
     <Card className='icon-generator-card'>
-      <div className='label' style={{ marginTop: 24, display: 'flex' }}>
+      {/* <div className='label' style={{ display: 'flex' }}>
         <div className='icon-generator-header'>
           <RobotOutlined />
         </div>
         <Title level={2} style={{ marginBottom: 0, lineHeight: '32px' }}>
           AI Icon Generator
         </Title>
-      </div>
+      </div> */}
       <Paragraph>
         Describe your dream icons and watch AI bring them to life in seconds!
       </Paragraph>
-      <Divider />
+      <Divider style={{ margin: '12px 0' }} />
       {/* Prompt Input */}
       <div className='label' style={{ marginTop: 0 }}>
-        <EditOutlined />
+        <EditOutlined style={{ marginRight: 4 }} />
         <span>Describe your icons</span>
       </div>
       <TextArea
@@ -154,7 +166,7 @@ const IconGenerator: React.FC<IconGeneratorProps> = ({
 
       {/* Style Selection */}
       <div className='label'>
-        <AppstoreOutlined />
+        <AppstoreOutlined style={{ marginRight: 4 }} />
         <span>Choose your style</span>
       </div>
       <Radio.Group
@@ -173,19 +185,29 @@ const IconGenerator: React.FC<IconGeneratorProps> = ({
               >
                 <div className='text-left'>
                   <b className='font-medium'>{styleOption.label}</b>
-                  <div className='text-xs text-gray-500'>
-                    {styleOption.desc}
-                  </div>
+                  <br />
+                  <label>{styleOption.desc}</label>
                 </div>
               </Radio.Button>
             </Col>
           ))}
         </Row>
       </Radio.Group>
+      {/* size of Icons */}
+      <div className='label'>
+        <ColumnHeightOutlined style={{ marginRight: 4 }} />
+        <span>Size of icons</span>
+      </div>
+      <Select
+        defaultValue={size}
+        onChange={(value) => setSize(value)}
+        style={{ width: '100%' }}
+        options={SIZEOPTIONS}
+      />
 
       {/* Number of Icons */}
       <div className='label'>
-        <NumberOutlined />
+        <NumberOutlined style={{ marginRight: 4 }} />
         <span>Number of variations</span>
       </div>
       <div className='slider-container'>
