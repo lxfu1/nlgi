@@ -63,7 +63,9 @@ router.post('/generate', async (req, res) => {
     }
 
     console.log(
-      `🎨 Generating icons for prompt: "${prompt}" with style: ${style}`
+      `🎨 Generating icons for prompt: "${prompt}" with style: ${JSON.stringify(
+        style
+      )}`
     );
 
     // Generate icons using AI service
