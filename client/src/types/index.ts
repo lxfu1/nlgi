@@ -17,7 +17,7 @@ export interface IconCollection {
 
 export interface GenerateRequest {
   prompt: string;
-  style?: 'modern' | 'classic' | 'minimal' | 'detailed';
+  style?: object;
   count?: number;
 }
 

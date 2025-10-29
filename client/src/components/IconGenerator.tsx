@@ -34,13 +34,32 @@ interface IconGeneratorProps {
 const { Title, Text, Paragraph } = Typography;
 const { TextArea } = Input;
 
+const STYLES = [
+  {
+    value: 'modern',
+    label: 'Modern',
+    desc: 'Clean and contemporary look'
+  },
+  {
+    value: 'line',
+    label: 'Line',
+    desc: 'Outline style with no fill'
+  },
+  { value: 'flat', label: 'Flat', desc: 'No depth or dimension' },
+  {
+    value: 'hand-drawn',
+    label: 'Hand-drawn',
+    desc: 'Sketch-like appearance'
+  }
+];
+
 const IconGenerator: React.FC<IconGeneratorProps> = ({
   onIconsGenerated,
   isLoading,
   setIsLoading
 }) => {
   const [prompt, setPrompt] = useState('');
-  const [style, setStyle] = useState<GenerateRequest['style']>('modern');
+  const [style, setStyle] = useState<string>('modern');
   const [count, setCount] = useState(2);
 
   const handleGenerate = async () => {
@@ -60,9 +79,10 @@ const IconGenerator: React.FC<IconGeneratorProps> = ({
     setIsLoading(true);
 
     try {
+      const styleInfo = STYLES.find((s) => s.value === style);
       const request: GenerateRequest = {
         prompt: prompt.trim(),
-        style,
+        style: styleInfo,
         count
       };
 
@@ -143,32 +163,16 @@ const IconGenerator: React.FC<IconGeneratorProps> = ({
         disabled={isLoading}
       >
         <Row gutter={[16, 16]}>
-          {[
-            {
-              value: 'modern',
-              label: 'Modern',
-              desc: 'contemporary'
-            },
-            {
-              value: 'minimal',
-              label: 'Minimal',
-              desc: 'Simple & elegant'
-            },
-            { value: 'classic', label: 'Classic', desc: 'Timeless design' },
-            {
-              value: 'detailed',
-              label: 'Detailed',
-              desc: 'Rich & intricate'
-            }
-          ].map((styleOption) => (
+          {STYLES.map((styleOption) => (
             <Col span={12} key={styleOption.value}>
               <Radio.Button
                 value={styleOption.value}
                 className='style-radio-button'
                 disabled={isLoading}
+                style={{ height: '100%' }}
               >
                 <div className='text-left'>
-                  <div className='font-medium'>{styleOption.label}</div>
+                  <b className='font-medium'>{styleOption.label}</b>
                   <div className='text-xs text-gray-500'>
                     {styleOption.desc}
                   </div>

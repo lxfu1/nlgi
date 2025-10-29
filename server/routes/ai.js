@@ -23,7 +23,11 @@ const generateSchema = Joi.object({
     'string.max': 'Prompt must not exceed 500 characters',
     'any.required': 'Prompt is required'
   }),
-  style: Joi.string().optional().valid('modern', 'classic', 'minimal', 'detailed').default('modern'),
+  style: Joi.object({
+    value: Joi.string().required(),
+    desc: Joi.string().required(),
+    label: Joi.string().optional()
+  }).required(),
   count: Joi.number().optional().integer().min(1).max(8).default(6)
 });
 
@@ -41,7 +45,7 @@ router.post('/generate', async (req, res) => {
     if (error) {
       return res.status(400).json({
         error: 'Validation error',
-        details: error.details.map(detail => ({
+        details: error.details.map((detail) => ({
           field: detail.path.join('.'),
           message: detail.message
         }))
@@ -58,7 +62,9 @@ router.post('/generate', async (req, res) => {
       });
     }
 
-    console.log(`🎨 Generating icons for prompt: "${prompt}" with style: ${style}`);
+    console.log(
+      `🎨 Generating icons for prompt: "${prompt}" with style: ${style}`
+    );
 
     // Generate icons using AI service
     const result = await aiService.generateIcons(prompt, { style, count });
@@ -80,7 +86,6 @@ router.post('/generate', async (req, res) => {
         generated_at: new Date().toISOString()
       }
     });
-
   } catch (error) {
     console.error('❌ Icon generation failed:', error.message);
 
@@ -92,7 +97,10 @@ router.post('/generate', async (req, res) => {
       });
     }
 
-    if (error.message.includes('quota') || error.message.includes('rate limit')) {
+    if (
+      error.message.includes('quota') ||
+      error.message.includes('rate limit')
+    ) {
       return res.status(429).json({
         error: 'AI service rate limit',
         message: 'AI service rate limit exceeded, please try again later',
@@ -124,7 +132,6 @@ router.get('/health', async (req, res) => {
       },
       timestamp: new Date().toISOString()
     });
-
   } catch (error) {
     res.status(503).json({
       status: 'ERROR',
