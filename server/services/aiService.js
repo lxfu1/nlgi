@@ -26,6 +26,7 @@ class AIService {
 4. SVG 代码要简洁，使用 path、circle、rect 等基本元素
 5. 图标尺寸建议 ${size}x${size} 视图框
 6. 提供每个图标的简短描述
+7. 确保 SVG 代码无错误且可直接使用
 
 返回格式：
 {

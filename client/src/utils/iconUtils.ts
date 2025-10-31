@@ -182,6 +182,10 @@ export const modifySVGColor = (svg: string, color: string): string => {
         element = element.replace(/(\s*\/?>)/, ` stroke="${color}"$1`);
       }
     }
+    // ---- stroke 和 fill 都不存在的情况，统一修改 stroke ----
+    if (!svgFill && !svgStroke) {
+      element = element.replace(/(\s*\/?>)/, ` stroke="${color}"$1`);
+    }
 
     return element;
   });
