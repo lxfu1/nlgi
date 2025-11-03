@@ -44,4 +44,13 @@ echo ""
 echo "Press Ctrl+C to stop the application"
 echo ""
 
-npm run dev
+npm run build
+echo "✅ Build completed successfully!"
+
+echo "Copy build files to server home directory..."
+mkdir -p ./server/build
+cp -r ./client/build/* ./server/build
+echo "✅ Files copied successfully!"
+
+npm run server
+echo "✅ AI Icon Factory is running!"

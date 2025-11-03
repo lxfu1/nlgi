@@ -8,7 +8,7 @@ const aiRoutes = require('./routes/ai');
 const iconRoutes = require('./routes/icons');
 
 const app = express();
-app.set('trust proxy', true);
+// app.set('trust proxy', true);
 const PORT = process.env.PORT || 3001;
 
 // Middleware
@@ -39,6 +39,9 @@ app.get('/health', (req, res) => {
   res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
+// static build
+app.use(express.static('build'));
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
@@ -58,5 +61,5 @@ app.use('*', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 AI Icon Factory Server running on port ${PORT}`);
-  console.log(`📊 Health check: http://localhost:${PORT}/health`);
+  console.log(`📊 Health check: http://localhost:${PORT}`);
 });
