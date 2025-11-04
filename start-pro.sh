@@ -1,4 +1,8 @@
 #!/bin/bash
+cd /home/admin/nlgi
+
+export NODE_ENV=production
+export PATH=/usr/local/bin:/usr/bin:/bin
 
 # AI Icon Factory - Quick Start Script
 echo "🎨 AI Icon Factory - Quick Start"
