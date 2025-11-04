@@ -8,7 +8,7 @@ const aiRoutes = require('./routes/ai');
 const iconRoutes = require('./routes/icons');
 
 const app = express();
-// app.set('trust proxy', true);
+app.set('trust proxy', true);
 const PORT = process.env.PORT || 3001;
 
 // Middleware
