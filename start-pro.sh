@@ -42,6 +42,7 @@ fi
 echo "🚀 Starting AI Icon Factory..."
 echo ""
 echo "The application will be available at:"
+echo "  Frontend: http://localhost:3000"
 echo "  Backend:  http://localhost:3001"
 echo ""
 echo "Press Ctrl+C to stop the application"
@@ -49,6 +50,11 @@ echo ""
 
 npm run build
 echo "✅ Build completed successfully!"
+
+echo "Copy build files to server home directory..."
+mkdir -p ./server/build
+cp -r ./client/build/* ./server/build
+echo "✅ Files copied successfully!"
 
 npm run server
 echo "✅ AI Icon Factory is running!"
